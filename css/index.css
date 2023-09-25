@@ -16,6 +16,7 @@ main > form{
     border-radius: 12px;
     width: 300px;
     height: 450px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.904);
 } 
 #login_topo {
     display: flex;
@@ -29,7 +30,6 @@ main > form{
     top: 0%;
 }
 #login_topo h1:hover{
-    text-decoration: underline;
     color: rgb(73, 73, 73);
 }
 #login_topo img{
