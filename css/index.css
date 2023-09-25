@@ -29,7 +29,6 @@ main > form{
     top: 0%;
 }
 #login_topo h1:hover{
-    text-decoration: underline;
     color: rgb(73, 73, 73);
 }
 #login_topo img{
