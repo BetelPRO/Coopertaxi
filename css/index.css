@@ -30,15 +30,15 @@ main > form{
     top: 0%;
 }
 #login_topo h1:hover{
+    cursor: default;
     color: rgb(73, 73, 73);
 }
 #login_topo img{
-    align-items: normal;
     border: 20px;
     border-color: yellowgreen;
 }
 #login_topo img:hover{
-    cursor: pointer;
+    cursor: default;
     border: 2px black;
     transform: scale(1.1);
 }
@@ -47,9 +47,33 @@ main > form{
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 1px;
-}
+    gap: 1px;}
 #login label{
     margin-top: 15px;
     margin-bottom: 0px;
+    width: 175px;
+    border-bottom: 1px solid rgb(43, 43, 43);}
+#login input{
+    border: none;
+    background-color: transparent;}
+#login input:focus{
+    outline: none;
+}
+#bot {
+    background-color: rgb(228, 228, 37);
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+#bot:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 0, 0.945);
+    font: Courier;
+    font-size: medium;
+    transform: scale(1.05);
 }
