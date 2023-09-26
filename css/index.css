@@ -10,6 +10,28 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;}
+#pag1-topo{
+    background-image: linear-gradient(to bottom, rgb(5, 175, 5), rgb(1, 109, 1));
+    width: 100%;
+    height: 98vh;
+    display: flex;
+    align-items: normal;
+    justify-content: space-between;}
+#pag1{width: 100%;
+    display: flex;
+    align-items: top center;
+    justify-content: space-between;}
+
+#pag1 i{height: 63px; margin: 30px;}
+#pag1 i:hover{
+    cursor: pointer;
+    animation: alternate;
+    color: rgba(238, 33, 33, 0.712);}
+#pag1 h1{
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+    border: 2px white;
+    cursor: default;}
 main > form{
     background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(238, 235, 235, 0.815));
     border: 2px black;
