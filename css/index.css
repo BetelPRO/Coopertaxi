@@ -29,8 +29,8 @@ main{
     color: rgba(238, 33, 33, 0.712);}
 #pag1 h1{
     font-size: 60px;
+    width: max-content 550px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
-    border: 2px white;
     cursor: default;}
 main > form{
     background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(238, 235, 235, 0.815));
@@ -80,6 +80,15 @@ main > form{
     background-color: transparent;}
 #login input:focus{
     outline: none;
+}
+#c_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+    font-size: 13px;
+    color: rgb(58, 57, 57);
+    text-decoration: none;
 }
 #bot {
     background-color: rgb(228, 228, 37);
