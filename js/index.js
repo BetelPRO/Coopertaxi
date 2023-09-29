@@ -19,9 +19,10 @@ function login(){
         if(nome == log_nome){
             log_senha = usuarios[i][2]
             if(senha == log_senha){
-                location.href = "https://www.youtube.com/watch?v=SRMEHklQC4M&t=529s"
+                location.href = "https://betelpro.github.io/Coopertaxi/paginas/pag01.html"
                 alert(log_nome)
-                alert(log_senha)}}}   
+                alert(log_senha)}
+            else{location.href = "https://betelpro.github.io/Coopertaxi"}}}   
 }
 
 function Cadastro(){
