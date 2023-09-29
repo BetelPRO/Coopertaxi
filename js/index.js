@@ -14,14 +14,12 @@ function login(){
     var nome = document.getElementById('nome').value
     var senha = document.getElementById("senha").value
     let i = 0
-    for(i; i<=2; ++i){
+    for(i; i<=5; ++i){
         log_nome = usuarios[i][0]
         if(nome == log_nome){
             log_senha = usuarios[i][2]
             if(senha == usuarios[i][2]){
-                location.href = "https://betelpro.github.io/Coopertaxi/paginas/pag01.html"
-                alert(log_nome)
-                alert(log_senha)}}}   
+                location.href = "https://betelpro.github.io/Coopertaxi/paginas/pag01.html"}}}   
 }
 
 function cadastro(){
