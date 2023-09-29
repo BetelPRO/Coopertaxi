@@ -6,10 +6,11 @@ const bot = getElementById('bot').value
 function login(){
     let usuarios = [
         ["deivid","deivid.procopio@ufpe.br","180624"],
-        ["Celia","diogo.tiburcio@ufpe.br","dsqsqds"]
+        ["Celia","diogo.tiburcio@ufpe.br","celiaamor"]
         ['Deivid','deividprocopio7@gmail.com','1806','81986728498']
         ['Diogo Procópio' ,'diogoprocopio07@gmail.com','diogo123','81986047766']
-        ['Thais','thaisdesouzabm@gmail.com','thais12e','81995117712']]
+        ['Thais','thaisdesouzabm@gmail.com','thais12e','81995117712']
+        ['Manoel', 'manoel-junioir96@hotmail.com', 'man0junior', '81994629566']]
         
     var nome = document.getElementById('nome').value
     var senha = document.getElementById("senha").value
