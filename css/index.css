@@ -6,22 +6,21 @@ body{
 main{
     background-image: linear-gradient(to bottom, rgb(5, 175, 5), rgb(1, 109, 1));
     width: 100%;
-    height: 98vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;}
-#pag1-topo{
-    background-image: linear-gradient(to bottom, rgb(5, 175, 5), rgb(1, 109, 1));
-    width: 100%;
-    height: 98vh;
-    display: flex;
-    align-items: normal;
-    justify-content: space-between;}
+    height: 98vh;}
+header{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 #pag1{width: 100%;
+    height: 100px;
     display: flex;
     align-items: top center;
     justify-content: space-between;}
-
+#pag1-topo div{
+    width: 100px;
+}
 #pag1 i{height: 63px; margin: 30px;}
 #pag1 i:hover{
     cursor: pointer;
@@ -32,7 +31,7 @@ main{
     width: max-content 550px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
     cursor: default;}
-main > form{
+header > form{
     background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(238, 235, 235, 0.815));
     border: 2px black;
     border-radius: 12px;
@@ -108,3 +107,17 @@ main > form{
     font-size: medium;
     transform: scale(1.05);
 }
+#cad_topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px 0px 30px;}
+#cad_topo h1{
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    position: relative;
+    margin-bottom: 50px;
+    top: 0%;
+}
+#cad_topo h1:hover{
+    cursor: default;
+    color: rgb(73, 73, 73);}

@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src="js/index.js"></script>
-    <link rel="stylesheet" href="css/index.css" media="all">
+    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <main>
-        <form action="https://api.sheetmonkey.io/form/kETdvSWYytj6acXznMUMXv" method="post" >
-            <div id="login_topo">
-                <h1>Login</h1>
-                <img src="imagens/icon.png" alt="coopertaxi">
-            </div>
-            <div id="login">
-                <label for="nome">Name<br><input type="text" name="nome" id="nome"></label>
-                <label for="senha">Senha<br><input type="password" name="senha" id="senha"></label>
-                <input type="hidden" name="x-sheetmonkey-redirect" value="https://betelpro.github.io/Coopertaxi/paginas/pag01.html"/>
-            </div>
-            <button onclick="login()"  type="submit" id="bot">Login</button>
-            <a href="paginas/cadastro.html" id="c_login">Criar Login</a>
-        </form>
+        <header>
+            <form><!--chamada da api-->
+                <div id="login_topo">
+                    <h1>Login</h1>
+                    <img src="imagens/icon.png" alt="coopertaxi">
+                </div>
+                <div id="login">
+                    <label for="nome">Nome<br><input type="text" name="nome" id="nome" required></label>
+                    <label for="senha">Senha<br><input type="password" name="senha" id="senha" required></label>
+                </div>
+                <button onclick="login()" formaction="paginas/pag01.html" type="submit" id="bot">Login</button>
+                <a href="paginas/cadastro.html" id="c_login">Criar Login</a>
+            </form>
+        </header>
     </main>
 </body>
 </html>
