@@ -26,13 +26,7 @@ function login(){
             else{location.href = "https://betelpro.github.io/Coopertaxi"}}}   
 }
 
-function Cadastro(){
-    var nome = document.getElementById('nome').value
-    var senha = document.getElementById("senha").value
-    
-    alert(nome)
-    if(nome == log_nome && senha == log_senha){
-        alert("ok")
-    }else{alert('erro')}
+function cadastro(){
+    alert('sucess')
 }
 
