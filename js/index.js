@@ -20,7 +20,7 @@ function login(){
         if(nome == log_nome){
             log_senha = usuarios[i][2]
             if(senha == log_senha){
-                document.location.replace("https://betelpro.github.io/Coopertaxi/paginas/pag01.html")
+                alert("Bem Vindo")
                 return
             }else{
                 alert('Senha incorreta')
