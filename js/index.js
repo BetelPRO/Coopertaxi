@@ -16,7 +16,7 @@ function login(){
     let senha = document.getElementById("senha").value
     let i = 0
     var u_inv = 0
-    for(i; i<=5; ++i){
+    for(i; i<=7; ++i){
         userNome = usuarios[i][0]
         userSenha = usuarios[i][2]
         if(nome === userNome){
