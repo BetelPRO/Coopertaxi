@@ -16,12 +16,13 @@ function login(){
     let i = 0
     var u_inv = 0
     for(i; i<=5; ++i){
-        log_nome = usuarios[i][0]
-        if(nome == log_nome){
-            log_senha = usuarios[i][2]
-            if(senha == log_senha){
-                alert("Bem Vindo")
-                return
+        userNome = usuarios[i][0]
+        userSenha = usuarios[i][2]
+        if(nome == userNome){
+            if(senha == userSenha){
+                window.open("https://betelpro.github.io/Coopertaxi/paginas/pag01.html")
+                window.close("https://betelpro.github.io/Coopertaxi")
+                return;
             }else{
                 alert('Senha incorreta')
                 u_inv = 1}}
