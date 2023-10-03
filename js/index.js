@@ -11,7 +11,7 @@ function login(){
         ['Diogo Procópio' ,'diogoprocopio07@gmail.com','diogo123','81986047766'],
         ['Thais','thaisdesouzabm@gmail.com','thais12e','81995117712'],
         ['Manoel', 'manoel-junioir96@hotmail.com', 'man0junior', '81994629566'],
-        ['Emerson', 'emersonvmp@gmail.com' '123emerson' '81995588598']]
+        ['Emerson', 'emersonvmp@gmail.com', '123emerson', '81995588598']]
     let nome = document.getElementById('nome').value
     let senha = document.getElementById("senha").value
     let i = 0
