@@ -93,26 +93,31 @@
     }
 
     function mostrarResumo() {
-      const resumo = document.getElementById("resumo");
-      resumo.innerHTML = "<h2>Resumo do Pedido:</h2>";
+    const resumo = document.getElementById("resumo");
+    resumo.innerHTML = "<h2>Resumo do Pedido:</h2>";
 
-      const totalCopos = document.querySelectorAll(".copo").length;
+    const totalCopos = document.querySelectorAll(".copo").length;
 
-      for (let i = 1; i <= totalCopos; i++) {
+    for (let i = 1; i <= totalCopos; i++) {
         const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
         resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
 
         ["farinhas", "guloseimas", "frutas"].forEach(grupo => {
-          const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
-          if (selecionados.length > 0) {
+        const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
+        if (selecionados.length > 0) {
             resumo.innerHTML += `<strong>${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</strong><ul>`;
             selecionados.forEach(item => {
-              resumo.innerHTML += `<li>${item.value}</li>`;
+            resumo.innerHTML += `<li>${item.value}</li>`;
             });
             resumo.innerHTML += `</ul>`;
-          }
+        }
         });
-      }
+    }
+
+    // Esconde os formulários e botão
+    document.getElementById("pedidoForm").style.display = "none";
+    document.getElementById("acompanhamentosContainer").style.display = "none";
+    document.getElementById("btnResumo").style.display = "none";
     }
   </script>
 
