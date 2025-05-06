@@ -1,21 +1,120 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Procópio's</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Monte seu pedido</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h2, h3 { margin-top: 20px; }
+    .grupo, .produto { margin: 15px 0; }
+    .copo { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px; }
+  </style>
 </head>
 <body>
-  <div>
-    <h1>comanda</h1>
-    <h2>1 - 300ml</h2>
-    <h5>Farinhas</h5>
-    <h2>Leite, Paçoca e Granola</h2>
-    <h5>Confeitos</h5>
-    <h2>Confete, Chocoball e Jujuba</h2>
-    <h5>Frutas</h5>
-    <h2>Banana</h2>
-  </div>
+
+  <h1>Monte seu pedido</h1>
+
+  <form id="pedidoForm">
+    <h2>Quantos copos deseja?</h2>
+
+    <div class="produto">
+      <h3>Açaí</h3>
+      <label>300ml: <input type="number" min="0" value="0" id="acai300"></label>
+      <label>400ml: <input type="number" min="0" value="0" id="acai400"></label>
+      <label>500ml: <input type="number" min="0" value="0" id="acai500"></label>
+    </div>
+
+    <div class="produto">
+      <h3>Cupuaçu</h3>
+      <label>300ml: <input type="number" min="0" value="0" id="cupu300"></label>
+      <label>400ml: <input type="number" min="0" value="0" id="cupu400"></label>
+      <label>500ml: <input type="number" min="0" value="0" id="cupu500"></label>
+    </div>
+
+    <br><button type="button" onclick="gerarFormularios()">Avançar</button>
+  </form>
+
+  <div id="acompanhamentosContainer"></div>
+  <button id="btnResumo" style="display:none; margin-top: 20px;" onclick="mostrarResumo()">Confirmar Pedido</button>
+
+  <div id="resumo" style="margin-top: 30px;"></div>
+
+  <script>
+    const produtos = [
+      { id: "acai300", nome: "Açaí 300ml" },
+      { id: "acai400", nome: "Açaí 400ml" },
+      { id: "acai500", nome: "Açaí 500ml" },
+      { id: "cupu300", nome: "Cupuaçu 300ml" },
+      { id: "cupu400", nome: "Cupuaçu 400ml" },
+      { id: "cupu500", nome: "Cupuaçu 500ml" },
+    ];
+
+    function gerarFormularios() {
+      const container = document.getElementById("acompanhamentosContainer");
+      container.innerHTML = "";
+      let copoCount = 0;
+
+      produtos.forEach(prod => {
+        const qtd = parseInt(document.getElementById(prod.id).value);
+        for (let i = 1; i <= qtd; i++) {
+          copoCount++;
+          const div = document.createElement("div");
+          div.className = "copo";
+          div.innerHTML = `
+            <h3>Copo ${copoCount}: ${prod.nome}</h3>
+            <div>
+              <strong>Farinhas:</strong><br>
+              <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Leite"> Leite</label>
+              <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Paçoca"> Paçoca</label>
+              <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Granola"> Granola</label>
+            </div>
+            <div>
+              <strong>Guloseimas:</strong><br>
+              <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Confete"> Confete</label>
+              <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Chocoball"> Chocoball</label>
+              <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Jujuba"> Jujuba</label>
+            </div>
+            <div>
+              <strong>Frutas:</strong><br>
+              <label><input type="checkbox" name="copo${copoCount}-frutas" value="Banana"> Banana</label>
+              <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
+              <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
+            </div>
+            <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
+          `;
+          container.appendChild(div);
+        }
+      });
+
+      if (copoCount === 0) {
+        alert("Selecione pelo menos um copo.");
+      } else {
+        document.getElementById("btnResumo").style.display = "block";
+      }
+    }
+
+    function mostrarResumo() {
+      const resumo = document.getElementById("resumo");
+      resumo.innerHTML = "<h2>Resumo do Pedido:</h2>";
+
+      const totalCopos = document.querySelectorAll(".copo").length;
+
+      for (let i = 1; i <= totalCopos; i++) {
+        const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
+        resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
+
+        ["farinhas", "guloseimas", "frutas"].forEach(grupo => {
+          const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
+          if (selecionados.length > 0) {
+            resumo.innerHTML += `<strong>${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</strong><ul>`;
+            selecionados.forEach(item => {
+              resumo.innerHTML += `<li>${item.value}</li>`;
+            });
+            resumo.innerHTML += `</ul>`;
+          }
+        });
+      }
+    }
+  </script>
+
 </body>
 </html>
