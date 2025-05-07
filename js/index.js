@@ -1,44 +1,82 @@
-var log_nome = getElementById('nome')
-var log_senha = getElementById('senha')
-const bot = getElementById('bot').value
+const produtos = [
+  { id: "acai300", nome: "Açaí 300ml" },
+  { id: "acai400", nome: "Açaí 400ml" },
+  { id: "acai500", nome: "Açaí 500ml" },
+  { id: "cupu300", nome: "Cupuaçu 300ml" },
+  { id: "cupu400", nome: "Cupuaçu 400ml" },
+  { id: "cupu500", nome: "Cupuaçu 500ml" },
+];
 
+function gerarFormularios() {
+  const container = document.getElementById("acompanhamentosContainer");
+  container.innerHTML = "";
+  let copoCount = 0;
 
-function login(){
-    let usuarios = [
-        ["deivid","deivid.procopio@ufpe.br","180624"],
-        ["Celia","diogo.tiburcio@ufpe.br","celiaamor"],
-        ['Deivid','deividprocopio7@gmail.com','1806','81986728498'],
-        ['Diogo Procópio' ,'diogoprocopio07@gmail.com','diogo123','81986047766'],
-        ['Thais','thaisdesouzabm@gmail.com','thais12e','81995117712'],
-        ['Manoel', 'manoel-junioir96@hotmail.com', 'man0junior', '81994629566'],
-        ['Emerson', 'emersonvmp@gmail.com', '123emerson', '81995588598']]
-    let nome = document.getElementById('nome').value
-    let senha = document.getElementById("senha").value
-    let i = 0
-    var u_inv = 0
-    for(i; i<=7; ++i){
-        userNome = usuarios[i][0]
-        userSenha = usuarios[i][2]
-        if(nome === userNome){
-            if(senha === userSenha){
-                window.open("https://betelpro.github.io/Coopertaxi/paginas/pag01.html")
-                window.close("https://betelpro.github.io/Coopertaxi/")
-                return;
-            }else{
-                alert('Senha incorreta')
-                u_inv = 1
-                return;}}
+  produtos.forEach(prod => {
+    const qtd = parseInt(document.getElementById(prod.id).value);
+    for (let i = 1; i <= qtd; i++) {
+      copoCount++;
+      const div = document.createElement("div");
+      div.className = "copo";
+      div.innerHTML = `
+        <h3>Copo ${copoCount}: ${prod.nome}</h3>
+
+        <div class="grupo">
+          <strong>Farinhas:</strong>
+          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Leite"> Leite</label>
+          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Paçoca"> Paçoca</label>
+          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Granola"> Granola</label>
+        </div>
+
+        <div class="grupo">
+          <strong>Guloseimas:</strong>
+          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Confete"> Confete</label>
+          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Chocoball"> Chocoball</label>
+          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Jujuba"> Jujuba</label>
+        </div>
+
+        <div class="grupo">
+          <strong>Frutas:</strong>
+          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Banana"> Banana</label>
+          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
+          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
+        </div>
+
+        <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
+      `;
+      container.appendChild(div);
     }
-    if(u_inv == 0){
-        alert("Usuário não encontrado")
-        return;
-    }
+  });
+
+  if (copoCount === 0) {
+    alert("Selecione pelo menos um copo.");
+  } else {
+    document.getElementById("btnResumo").style.display = "block";
+  }
 }
 
-function red(){
-    window.location.replace("../paginas/pag01.html")
-}
-function cadastro(){
-    alert('sucess')
-}
+function mostrarResumo() {
+  const totalCopos = document.querySelectorAll(".copo").length;
+  const resumo = document.getElementById("resumo");
+  resumo.innerHTML = "";
 
+  for (let i = 1; i <= totalCopos; i++) {
+    const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
+    resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
+
+    ["farinhas", "guloseimas", "frutas"].forEach(grupo => {
+      const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
+      if (selecionados.length > 0) {
+        resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; margin-top: 2px;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
+        selecionados.forEach(item => {
+          resumo.innerHTML += `<li style="font-size: 20px;">${item.value}</li>`;
+        });
+        resumo.innerHTML += `</ul>`;
+      }
+    });
+  }
+
+  document.getElementById("pedidoForm").style.display = "none";
+  document.getElementById("acompanhamentosContainer").style.display = "none";
+  document.getElementById("btnResumo").style.display = "none";
+}
