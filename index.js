@@ -19,31 +19,39 @@ function gerarFormularios() {
       const div = document.createElement("div");
       div.className = "copo";
       div.innerHTML = `
-        <h3>Copo ${copoCount}: ${prod.nome}</h3>
+  <h3>Copo ${copoCount}: ${prod.nome}</h3>
 
-        <div class="grupo">
-          <strong>Farinhas:</strong>
-          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Leite"> Leite</label>
-          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Paçoca"> Paçoca</label>
-          <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Granola"> Granola</label>
-        </div>
+  <div class="grupo">
+    <strong>Farinhas:</strong>
+    <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Leite"> Leite</label>
+    <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Paçoca"> Paçoca</label>
+    <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Granola"> Granola</label>
+  </div>
 
-        <div class="grupo">
-          <strong>Guloseimas:</strong>
-          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Confete"> Confete</label>
-          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Chocoball"> Chocoball</label>
-          <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Jujuba"> Jujuba</label>
-        </div>
+  <div class="grupo">
+    <strong>Guloseimas:</strong>
+    <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Confete"> Confete</label>
+    <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Chocoball"> Chocoball</label>
+    <label><input type="checkbox" name="copo${copoCount}-guloseimas" value="Jujuba"> Jujuba</label>
+  </div>
 
-        <div class="grupo">
-          <strong>Frutas:</strong>
-          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Banana"> Banana</label>
-          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
-          <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
-        </div>
+  <div class="grupo">
+    <strong>Frutas:</strong>
+    <label><input type="checkbox" name="copo${copoCount}-frutas" value="Banana"> Banana</label>
+    <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
+    <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
+  </div>
 
-        <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
-      `;
+  <div class="grupo">
+    <strong>Coberturas:</strong>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Leite Condensado"> Leite Condensado</label>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Chocolate"> Chocolate</label>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Morango"> Morango</label>
+  </div>
+
+  <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
+`;
+
       container.appendChild(div);
     }
   });
