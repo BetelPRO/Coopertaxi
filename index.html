@@ -3,6 +3,60 @@
 <head>
   <title>Monte seu pedido</title>
   <style>
+    /* Garante que o layout use toda a largura disponível */
+    body {
+    max-width: 100%;
+    box-sizing: border-box;
+    }
+
+    /* Torna inputs, botões e formulários fluidos */
+    input[type="number"],
+    button {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    }
+
+    /* Copos e grupos de acompanhamentos responsivos */
+    .copo, .grupo {
+    width: 100%;
+    box-sizing: border-box;
+    }
+
+    /* Resumo adaptado */
+    #resumo {
+    padding: 10px;
+    }
+
+    /* Media Query para smartphones */
+    @media (max-width: 600px) {
+    body {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 18px;
+    }
+
+    .copo {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    button {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    label {
+        font-size: 15px;
+    }
+    }
+
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
@@ -173,7 +227,7 @@
         ["farinhas", "guloseimas", "frutas"].forEach(grupo => {
           const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
           if (selecionados.length > 0) {
-            resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; color: #666;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
+            resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
             selecionados.forEach(item => {
                 resumo.innerHTML += `<li style="font-size: 16px;">${item.value}</li>`;
             });
