@@ -48,6 +48,14 @@ function gerarFormularios() {
     <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
     <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
   </div>
+  
+  <div class="grupo">
+  <strong>Adicionais:</strong>
+  <label><input type="checkbox" name="copo${copoCount}-adicionais" value="Goma de amora"> Goma de amora</label>
+  <label><input type="checkbox" name="copo${copoCount}-adicionais" value="Goma ácida"> Goma ácida</label>
+  <label><input type="checkbox" name="copo${copoCount}-adicionais" value="Canudinho"> Canudinho</label>
+  <label><input type="checkbox" name="copo${copoCount}-adicionais" value="Fini"> Fini</label>
+</div>
 
   <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
 `;
@@ -72,7 +80,7 @@ function mostrarResumo() {
     const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
     resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
 
-    ["coberturas","farinhas", "guloseimas", "frutas"].forEach(grupo => {
+    ["coberturas","farinhas", "guloseimas", "frutas", "adicionais"].forEach(grupo => {
       const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
       if (selecionados.length > 0) {
         resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; margin-top: 2px;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
