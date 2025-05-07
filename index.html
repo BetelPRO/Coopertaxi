@@ -118,12 +118,11 @@
     }
 
     #resumo li {
-    margin-top: 1px;
     padding: 2px 0;
     }
 
     #resumo div {
-    margin-bottom: 10px;
+    margin: 5px;
     }
 
   </style>
@@ -229,7 +228,7 @@
           if (selecionados.length > 0) {
             resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; margin-top: 2px;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
             selecionados.forEach(item => {
-                resumo.innerHTML += `<li style="font-size: 19px;">${item.value}</li>`;
+                resumo.innerHTML += `<li style="font-size: 20px;">${item.value}</li>`;
             });
             resumo.innerHTML += `</ul>`;
           }
