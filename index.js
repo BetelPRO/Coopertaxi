@@ -73,24 +73,42 @@ function gerarFormularios() {
 
 function mostrarResumo() {
   const totalCopos = document.querySelectorAll(".copo").length;
-  const resumo = document.getElementById("resumo");
-  resumo.innerHTML = "";
+  const pedidos = [];
 
   for (let i = 1; i <= totalCopos; i++) {
     const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
-    resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
+    const copoResumo = { copo: i, produto, acompanhamentos: {} };
 
-    ["coberturas","farinhas", "guloseimas", "frutas", "adicionais"].forEach(grupo => {
-      const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
+    ["farinhas", "guloseimas", "frutas", "coberturas", "adicionais"].forEach(grupo => {
+      const selecionados = Array.from(document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`)).map(item => item.value);
       if (selecionados.length > 0) {
-        resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; margin-top: 2px;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
-        selecionados.forEach(item => {
-          resumo.innerHTML += `<li style="font-size: 20px;">${item.value}</li>`;
-        });
-        resumo.innerHTML += `</ul>`;
+        copoResumo.acompanhamentos[grupo] = selecionados;
       }
     });
+
+    pedidos.push(copoResumo);
   }
+
+  // Salva no localStorage
+  localStorage.setItem("pedidosAcai", JSON.stringify(pedidos));
+
+  // Exibe o resumo na tela
+  const resumo = document.getElementById("resumo");
+  resumo.innerHTML = "<h2>Resumo do Pedido:</h2>";
+
+  pedidos.forEach(copo => {
+    resumo.innerHTML += `<h3>Copo ${copo.copo}: ${copo.produto}</h3>`;
+    Object.entries(copo.acompanhamentos).forEach(([grupo, itens]) => {
+      resumo.innerHTML += `<div><strong>${grupo}:</strong><ul>${itens.map(i => `<li>${i}</li>`).join("")}</ul></div>`;
+    });
+  });
+
+  // Oculta os formulários
+  document.getElementById("pedidoForm").style.display = "none";
+  document.getElementById("acompanhamentosContainer").style.display = "none";
+  document.getElementById("btnResumo").style.display = "none";
+}
+
 
   document.getElementById("pedidoForm").style.display = "none";
   document.getElementById("acompanhamentosContainer").style.display = "none";
