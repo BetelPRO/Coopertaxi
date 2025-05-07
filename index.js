@@ -22,6 +22,13 @@ function gerarFormularios() {
   <h3>Copo ${copoCount}: ${prod.nome}</h3>
 
   <div class="grupo">
+    <strong>Coberturas:</strong>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Leite Condensado"> Leite Condensado</label>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Chocolate"> Chocolate</label>
+    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Morango"> Morango</label>
+  </div>
+
+  <div class="grupo">
     <strong>Farinhas:</strong>
     <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Leite"> Leite</label>
     <label><input type="checkbox" name="copo${copoCount}-farinhas" value="Paçoca"> Paçoca</label>
@@ -40,13 +47,6 @@ function gerarFormularios() {
     <label><input type="checkbox" name="copo${copoCount}-frutas" value="Banana"> Banana</label>
     <label><input type="checkbox" name="copo${copoCount}-frutas" value="Morango"> Morango</label>
     <label><input type="checkbox" name="copo${copoCount}-frutas" value="Uva"> Uva</label>
-  </div>
-
-  <div class="grupo">
-    <strong>Coberturas:</strong>
-    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Leite Condensado"> Leite Condensado</label>
-    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Chocolate"> Chocolate</label>
-    <label><input type="checkbox" name="copo${copoCount}-coberturas" value="Morango"> Morango</label>
   </div>
 
   <input type="hidden" name="copo${copoCount}-produto" value="${prod.nome}">
@@ -72,7 +72,7 @@ function mostrarResumo() {
     const produto = document.querySelector(`input[name="copo${i}-produto"]`).value;
     resumo.innerHTML += `<h3>Copo ${i}: ${produto}</h3>`;
 
-    ["farinhas", "guloseimas", "frutas"].forEach(grupo => {
+    ["coberturas","farinhas", "guloseimas", "frutas"].forEach(grupo => {
       const selecionados = document.querySelectorAll(`input[name="copo${i}-${grupo}"]:checked`);
       if (selecionados.length > 0) {
         resumo.innerHTML += `<div style="font-size: 14px; font-weight: bold; margin-top: 2px;">${grupo.charAt(0).toUpperCase() + grupo.slice(1)}:</div><ul>`;
