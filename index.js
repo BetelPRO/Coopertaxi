@@ -89,9 +89,6 @@ function mostrarResumo() {
     pedidos.push(copoResumo);
   }
 
-  // Salva no localStorage
-  localStorage.setItem("pedidosAcai", JSON.stringify(pedidos));
-
   // Exibe o resumo na tela
   const resumo = document.getElementById("resumo");
   resumo.innerHTML = "<h2>Resumo do Pedido:</h2>";
